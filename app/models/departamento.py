@@ -1,0 +1,12 @@
+from sqlmodel import SQLModel, Field, Relationship
+from typing import Optional
+
+from app.models.empleado import Empleado
+
+class Departamento(SQLModel, table = True):
+    empleado_id: int = Field(foreign_key = "empleado.id")
+
+    nom_departamento: str
+
+    id: int | None = Field(default = None, primary_key = True)
+    departamento: Optional["Empleado"] = Relationship(back_populates = "empleados")
