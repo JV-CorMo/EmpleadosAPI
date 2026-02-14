@@ -4,7 +4,7 @@ from app.db.session import get_session
 from app.services.empleadoService import EmpleadoService
 from app.schemas.empleadoSchema import EmpleadoCreate, EmpleadoResponse, EmpleadoUpdate
 
-router = APIRouter(prefix = "/empleados", tags = ["Empleados"])
+router = APIRouter(prefix = "/empleados", tags = ["Empleado"])
 
 @router.post("/", response_model=EmpleadoResponse)
 async def create_empleado(empleado: EmpleadoCreate, service: EmpleadoService = Depends()):
@@ -19,11 +19,11 @@ async def read_empleado(id: int, service: EmpleadoService = Depends()):
     return service.get_by_id(id)
 
 @router.patch("/{id}", response_model=EmpleadoResponse)
-async def read_empleado(id: id, empleado_data: EmpleadoResponse, service: EmpleadoService = Depends()):
+async def read_empleado(id: int, empleado_data: EmpleadoResponse, service: EmpleadoService = Depends()):
     return service.update(id, empleado_data)
 
 @router.delete("/{id}", response_model=dict)
-async def delete_empleado(id: id, service: EmpleadoService = Depends()):
+async def delete_empleado(id: int, service: EmpleadoService = Depends()):
     return service.delete(id)
 
 

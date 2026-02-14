@@ -1,4 +1,4 @@
-from  sqlmodel import SQLModel
+from sqlmodel import SQLModel
 
 class EmpleadoCreate(SQLModel):
     nombre:           str 

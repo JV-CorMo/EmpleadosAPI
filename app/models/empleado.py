@@ -1,6 +1,5 @@
-from sqlmodel import SQLModel, Field, Relationship
 
-from app.models.departamento import Departamento
+from sqlmodel import SQLModel, Field, Relationship
 
 class Empleado(SQLModel, table=True):
     nombre:           str 

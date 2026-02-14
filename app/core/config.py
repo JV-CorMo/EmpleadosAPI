@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings
 
 class Config(BaseSettings):
-    database_url: str = ""   #Falta la ruta a la base de datos y la DB
+    database_url: str  = "sqlite:///./database.db"
     debug: bool = False
 
     class Config:
