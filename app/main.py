@@ -5,12 +5,16 @@ from sqlmodel import SQLModel
 
 from fastapi.responses import Response
 
+from fastapi.staticfiles import StaticFiles
+
 
 app = FastAPI()
 
 # Registrar las rutas
 app.include_router(departamentoRout.router)
 app.include_router(empleadoRout.router)
+
+app.mount("/media", StaticFiles(directory="app/media"), name="media")
 
 # Crear tablas en la base de datos si no existen
 def init_db():
@@ -26,6 +30,8 @@ init_db()
 @app.get("/")
 def root():
     return {"status": "API funcionando"}
+
+
 
 
 @app.get("/favicon.ico", include_in_schema=False)

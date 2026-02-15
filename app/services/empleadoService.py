@@ -4,6 +4,8 @@ from app.models.empleado import Empleado
 from app.schemas.empleadoSchema import EmpleadoCreate, EmpleadoResponse, EmpleadoUpdate
 from app.db.session import get_session
 
+from app.services.imagenArchivoServicio import FileService
+
 class EmpleadoService:
     def __init__(self, session: Session = Depends(get_session)):
         self.session = session
@@ -41,4 +43,14 @@ class EmpleadoService:
         self.session.delete(empleado)
         self.session.commit()
         return {"message": "Empleado eliminado exitosamente"}
-        
+    
+    def up_imagen_empleado(self, id: int, imagen):
+        empleado = self.session.get(Empleado, id)
+        if not empleado:
+            raise HTTPException(status_code=404, detail="Empleado no encontrado")
+        ruta_imagen = FileService.save_employee_image(imagen)
+        empleado.imagen_empleado = ruta_imagen
+        self.session.add(empleado)
+        self.session.commit()
+        self.session.refresh(empleado)
+        return empleado
