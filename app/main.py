@@ -38,4 +38,4 @@ def root():
 async def favicon():
     return Response(status_code=204)
 
-# Lanzar desde raíz de proyecto ( uvicorn app.main:app --reload ) 
+# Lanzar desde raíz de proyecto ( uvicorn app.main:app  ) 
