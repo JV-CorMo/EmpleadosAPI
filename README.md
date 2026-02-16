@@ -12,7 +12,7 @@ JvCorMo
 
 ## Colaboraciones 
 
-Gurú - Profesor      DAM Luis Vives.
+Gurú - Profesor Javier Palacios DAM Luis Vives.
 
 ## API de FastAPI con SQLModel
 Esta API utiliza FastAPI, un framework moderno y rápido para construir APIs en Python, y SQLModel, una librería que combina lo mejor de SQLAlchemy y Pydantic para definir modelos de datos y manejar bases de datos de forma sencilla.
